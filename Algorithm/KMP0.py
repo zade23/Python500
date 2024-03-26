@@ -1,9 +1,9 @@
 # KMP算法：解决字符串中最短重复单元问题
 def compute_LPS_array(pattern):
     """计算部分匹配表（Longest Prefix Suffix）"""
-    lps = [0] * len(pattern)
-    length = 0
-    i = 1
+    length = 0 # 当前最长的相等前后缀的长度
+    lps = [0] * len(pattern) # *构建部分匹配表*
+    i = 1 # 模式字符串的位置
 
     while i < len(pattern):
         if pattern[i] == pattern[length]:
@@ -17,6 +17,7 @@ def compute_LPS_array(pattern):
                 lps[i] = 0
                 i += 1
     return lps
+
 def find_smallest_repeating_unit(s):
     """找到最小重复单元"""
     lps = compute_LPS_array(s)
@@ -29,5 +30,6 @@ def find_smallest_repeating_unit(s):
         return s
 
 # 示例
-s = "ababab"
+s = "abacabab"
 print(find_smallest_repeating_unit(s))
+print(compute_LPS_array(s))
